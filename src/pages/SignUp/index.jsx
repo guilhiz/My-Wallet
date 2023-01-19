@@ -1,17 +1,42 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { api } from "../../services";
+
+import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
 import * as S from "./styles";
 
 function SignUp() {
+  const { register, handleSubmit } = useForm();
+  const navigate = useNavigate()
+
+  const onSubmit = (data) => {
+    api
+      .post("/sign-up", data)
+      .then((res) => navigate("/"))
+      .catch((err) => console.log(err.response.data));
+  };
+
   return (
     <S.Container>
       <S.Content>
         <h1>MyWallet</h1>
-        <S.Form action="">
-          <input type="text" name="name" placeholder="Nome" />
-          <input type="email" name="email" placeholder="E-mail" />
-          <input type="password" name="password" placeholder="Senha" />
-          <input type="password" name="confirm Password" placeholder="Confirme a senha" />
+        <S.Form onSubmit={handleSubmit(onSubmit)}>
+          <input
+            type="text"
+            {...register("name", { required: true, minLength: 3, maxLength: 20 })}
+            placeholder="Nome"
+          />
+          <input type="email" {...register("email", { required: true, maxLength: 50 })} placeholder="E-mail" />
+          <input
+            type="password"
+            {...register("password", { required: true, minLength: 4, maxLength: 16 })}
+            placeholder="Senha"
+          />
+          <input
+            type="password"
+            {...register("confirmPassword", { required: true, minLength: 4, maxLength: 16 })}
+            placeholder="Confirme a senha"
+          />
           <button type="submit">Cadastrar</button>
         </S.Form>
         <Link to={"/"}>
