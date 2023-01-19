@@ -6,7 +6,6 @@ export const Container = styled.div`
   padding: 25px;
   margin: 0px auto;
 `;
-
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
@@ -14,7 +13,7 @@ export const Content = styled.div`
   width: 100%;
   margin: 0px auto;
   h1 {
-    margin-top: 120px;
+    margin-top: 70px;
     margin-bottom: 24px;
   }
 
@@ -29,11 +28,7 @@ export const Content = styled.div`
       opacity: 0.7;
     }
   }
-
 `;
-
-
-
 export const Form = styled.form`
   display: flex;
   flex-direction: column;

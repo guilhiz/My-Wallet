@@ -101,6 +101,10 @@ button {
 	color: ${(props) => props.theme.textBtn};
 }
 
+a {
+    text-decoration: none;
+}
+
 *, *:before, *:after {
 	font-family: 'Raleway', sans-serif;
   font-weight: 400;

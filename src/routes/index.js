@@ -4,6 +4,7 @@ import { ThemeProvider } from "styled-components";
 import { lightTheme } from "../theme";
 import React from "react";
 import SignIn from "../pages/SignIn";
+import SignUp from "../pages/SignUp";
 
 export function RouteProvider() {
   return (
@@ -12,7 +13,7 @@ export function RouteProvider() {
         <GlobalStyle />
         <Routes>
           <Route path="/" element={<SignIn />} />
-          <Route path="/cadastro" element={<SignIn />} />
+          <Route path="/cadastro" element={<SignUp />} />
           <Route path="/home" element={<SignIn />} />
           <Route path="/nova-entrada" element={<SignIn />} />
           <Route path="/nova-saida" element={<SignIn />} />
@@ -21,4 +22,3 @@ export function RouteProvider() {
     </Router>
   );
 }
-
