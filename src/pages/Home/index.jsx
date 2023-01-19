@@ -1,5 +1,6 @@
 import React from "react";
 import { PlusCircle, SignOut, MinusCircle } from "phosphor-react";
+import { Link } from "react-router-dom";
 import * as S from "./styles";
 
 function Home() {
@@ -16,18 +17,22 @@ function Home() {
           <p>Ainda não registros de entrada ou saída</p>
         </S.Main>
         <S.Footer>
-          <S.Button>
-            <div>
-              <PlusCircle size={24} color="#ffffff" />{" "}
-            </div>
-            <p>Nova entrada</p>
-          </S.Button>
-          <S.Button>
-            <div>
-              <MinusCircle size={24} color="#ffffff" />
-            </div>
-            <p>Nova Saída</p>
-          </S.Button>
+          <Link to={"/nova-entrada"}>
+            <S.Button>
+              <div>
+                <PlusCircle size={24} color="#ffffff" />{" "}
+              </div>
+              <p>Nova entrada</p>
+            </S.Button>
+          </Link>
+          <Link to={"/nova-saida"}>
+            <S.Button>
+              <div>
+                <MinusCircle size={24} color="#ffffff" />
+              </div>
+              <p>Nova Saída</p>
+            </S.Button>
+          </Link>
         </S.Footer>
       </S.Content>
     </S.Container>
