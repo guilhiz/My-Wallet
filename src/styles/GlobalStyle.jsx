@@ -42,10 +42,8 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-  html, body {
-   box-sizing: border-box;
-  font-family:  'Raleway', sans-serif;
-  font-weight: 400;
+html, body {
+  box-sizing: border-box;
   background-color: ${(props) => props.theme.background};
   line-height: 1;
 }
@@ -55,7 +53,7 @@ table {
 		opacity: 0.7;
 	}
 	:active {
-		scale: 0.9;
+		scale: 0.97;
 	}
  }
  h1 {
@@ -63,7 +61,7 @@ table {
 	font-weight: 400;
 	font-size: 32px;
 	line-height: 50px;
-  color: #FFFFFF;
+  color: ${(props) => props.theme.title};
  }
 
  h2 {
@@ -72,7 +70,40 @@ table {
 	line-height: 31px;
 	color: ${(props) => props.theme.title};
 }
+
+input {
+	width: 326px;
+  height: 58px;
+  background: ${(props) => props.theme.input};
+  border-radius: 5px;
+  margin-bottom: 13px;
+  border: none;
+	padding-left: 15px;
+  ::placeholder {
+    font-size: 20px;
+    line-height: 23px;
+    color: ${(props) => props.theme.text};
+    opacity: 1;
+  }
+}
+
+button {
+	width: 326px;
+	height: 46px;
+	background: ${(props) => props.theme.button};
+	border-radius: 5px;
+	border: none;
+	cursor: pointer;
+
+	font-weight: 700;
+	font-size: 20px;
+	line-height: 23px;
+	color: ${(props) => props.theme.textBtn};
+}
+
 *, *:before, *:after {
+	font-family: 'Raleway', sans-serif;
+  font-weight: 400;
   box-sizing: inherit;
 }
 

@@ -6,11 +6,11 @@ function SignIn() {
     <S.Container>
       <S.Content>
           <h1>MyWallet</h1>
-          <form action="">
+          <S.Form action="">
             <input type="text" name="email" placeholder="E-mail" />
             <input type="text" name="password" placeholder="Senha" />
             <button type="submit">Entrar</button>
-          </form>
+          </S.Form>
           <p>Primeira vez? Cadastre-se!</p>
       </S.Content>
     </S.Container>

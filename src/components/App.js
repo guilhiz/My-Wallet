@@ -1,16 +1,7 @@
-// import { RouteProvider } from "../routes";
-import { GlobalStyle } from "../styles/GlobalStyle";
-import { ThemeProvider } from "styled-components";
-import { lightTheme } from "../theme";
-import SignIn from "../pages/SignIn";
+import { RouteProvider } from "../routes";
 
 function App() {
-  return (
-    <ThemeProvider theme={lightTheme}>
-      <GlobalStyle />
-      <SignIn />
-    </ThemeProvider>
-  );
+  return <RouteProvider />;
 }
 
 export default App;
