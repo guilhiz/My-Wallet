@@ -1,7 +1,8 @@
 export const lightTheme = {
-  background: "#FFFFFE",
-  title: "#2B2C34",
-  text: "#2B2C34",
-  highlight: "#6246EA",
-  textBtn: "#FFFFFE",
+  background: "#8C11BE",
+  button: "#A328D6",
+  title: "#FFFFFF",
+  text: "#0D0D0D",
+  secondary: "#C6C6C6",
+  textBtn: "#FFFFFF",
 };

@@ -43,11 +43,34 @@ table {
 	border-spacing: 0;
 }
   html, body {
-  /* box-sizing: border-box;
-  font-family: 'Barlow', sans-serif;
+   box-sizing: border-box;
+  font-family:  'Raleway', sans-serif;
   font-weight: 400;
-  background-color: ${(props) => props.theme.background}; */
+  background-color: ${(props) => props.theme.background};
   line-height: 1;
+}
+
+ button {
+	:hover {
+		opacity: 0.7;
+	}
+	:active {
+		scale: 0.9;
+	}
+ }
+ h1 {
+	font-family: 'Saira Stencil One';
+	font-weight: 400;
+	font-size: 32px;
+	line-height: 50px;
+  color: #FFFFFF;
+ }
+
+ h2 {
+	font-weight: 700;
+	font-size: 26px;
+	line-height: 31px;
+	color: ${(props) => props.theme.title};
 }
 *, *:before, *:after {
   box-sizing: inherit;
