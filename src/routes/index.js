@@ -7,6 +7,7 @@ import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
 import Home from "../pages/Home";
 import NewIncome from "../pages/NewIncome";
+import NewExpense from "../pages/NewExpense";
 
 export function RouteProvider() {
   return (
@@ -18,7 +19,7 @@ export function RouteProvider() {
           <Route path="/cadastro" element={<SignUp />} />
           <Route path="/home" element={<Home />} />
           <Route path="/nova-entrada" element={<NewIncome />} />
-          <Route path="/nova-saida" element={<SignIn />} />
+          <Route path="/nova-saida" element={<NewExpense />} />
         </Routes>
       </ThemeProvider>
     </Router>
