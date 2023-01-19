@@ -12,7 +12,6 @@ export const Content = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  margin: 0px auto;
   h1 {
     margin-top: 120px;
     margin-bottom: 24px;

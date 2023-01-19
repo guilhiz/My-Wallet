@@ -10,7 +10,9 @@ function SignIn() {
         <S.Form action="">
           <input type="text" name="email" placeholder="E-mail" />
           <input type="text" name="password" placeholder="Senha" />
-          <button type="submit">Entrar</button>
+          <Link to={"/home"}>
+            <button type="submit">Entrar</button>
+          </Link>
         </S.Form>
         <Link to={"/cadastro"}>
           <p>Primeira vez? Cadastre-se!</p>
