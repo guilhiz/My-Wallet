@@ -12,8 +12,8 @@ function SignUp() {
   const onSubmit = (data) => {
     api
       .post("/sign-up", data)
-      .then((res) => navigate("/"))
-      .catch((err) => console.log(err.response.data));
+      .then(() => navigate("/"))
+      .catch((err) => console.log(err));
   };
 
   return (
