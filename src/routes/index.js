@@ -20,9 +20,9 @@ export function RouteProvider() {
         <Routes>
           <Route path="/" element={<SignIn setUser={setUser} />} />
           <Route path="/cadastro" element={<SignUp />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/nova-entrada" element={<NewIncome />} />
-          <Route path="/nova-saida" element={<NewExpense />} />
+          <Route path="/home" element={<Home user={user} />} />
+          <Route path="/nova-entrada" element={<NewIncome user={user} />} />
+          <Route path="/nova-saida" element={<NewExpense user={user} />} />
         </Routes>
       </ThemeProvider>
     </Router>
