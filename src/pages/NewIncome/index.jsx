@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { api } from "../../services";
-import { Link, useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 import * as S from "./styles";
 
 function NewIncome({ user }) {
@@ -14,7 +14,7 @@ function NewIncome({ user }) {
     console.log(data)
     api
       .post("/income", data, config)
-      .then((res) => console.log(res))
+      .then(() => navigate("/home"))
       .catch((err) => console.log(err));
   };
 
