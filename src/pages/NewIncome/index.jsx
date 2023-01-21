@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { api } from "../../services";
-import {useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import * as S from "./styles";
 
 function NewIncome({ user }) {
@@ -10,12 +10,13 @@ function NewIncome({ user }) {
 
   const onSubmit = (data) => {
     const { token } = user;
-    const config = { headers: { Token: token } };
-    console.log(data)
+    console.log(token);
+    const config = { headers: { Authorization: `Bearer ${token}` } };
+    console.log(data);
     api
       .post("/income", data, config)
       .then(() => navigate("/home"))
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(`ocorreu um erro ${err}`));
   };
 
   return (

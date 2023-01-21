@@ -34,7 +34,8 @@ export const Main = styled.main`
   height: 446px;
   border-radius: 5px;
   margin-bottom: 13px;
-  p {
+  padding: 23px 12px;
+  h3 {
     margin: 0px auto;
     text-align: center;
     width: 220px;

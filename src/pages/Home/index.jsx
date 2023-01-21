@@ -3,13 +3,14 @@ import { PlusCircle, SignOut, MinusCircle } from "phosphor-react";
 import { Link } from "react-router-dom";
 import { api } from "../../services";
 import * as S from "./styles";
+import Records from "../../components/Records";
 
 function Home({ user }) {
- const [records, setRecords] = useState(null)
+  const [records, setRecords] = useState([]);
 
   useEffect(() => {
     const { token } = user;
-    const config = { headers: { Token: token } };
+    const config = { headers: { Authorization: `Bearer ${token}` } };
     api
       .get("/records", config)
       .then((res) => setRecords(res.data))
@@ -20,14 +21,17 @@ function Home({ user }) {
     <S.Container>
       <S.Content>
         <S.Header>
-          <h2>Olá, Guilherme</h2>
+          <h2>Olá, {user.name}</h2>
           <div>
             <SignOut size={32} color="#ffffff" />
           </div>
         </S.Header>
         <S.Main>
-          {!records && <p>Ainda não registros de entrada ou saída</p>}
-          {records && <p>Em breve os registros de entrada ou saída estarão aqui</p>}
+          {records?.length < 1 && <h3>Ainda não registros de entrada ou saída</h3>}
+          {records?.length > 0 &&
+            records.map((r) => (
+              <Records key={r._id} value={r.value} description={r.description} date={r.date} type={r.type} />
+            ))}
         </S.Main>
         <S.Footer>
           <Link to={"/nova-entrada"}>

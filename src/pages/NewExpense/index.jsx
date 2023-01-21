@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { api } from "../../services";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import * as S from "./styles";
 
 function NewExpense({ user }) {
@@ -10,12 +10,12 @@ function NewExpense({ user }) {
 
   const onSubmit = (data) => {
     const { token } = user;
-    const config = { headers: { Token: token } };
+    const config = { headers: { Authorization: `Bearer ${token}` } };
     console.log(data);
     api
       .post("/expense", data, config)
-      .then((res) => navigate("/home"))
-      .catch((err) => console.log(err));
+      .then(() => navigate("/home"))
+      .catch((err) => console.log(`ocorreu um erro ${err}`));
   };
   return (
     <S.Container>
@@ -25,7 +25,7 @@ function NewExpense({ user }) {
           <input type="text" {...register("value", { required: true, minLength: 2 })} placeholder="Valor" />
           <input
             type="text"
-            {...register("description", { required: true, minLength: 3, maxLength: 50 })}
+            {...register("description", { required: true, minLength: 3, maxLength: 30 })}
             placeholder="Descrição"
           />
           <button type="submit">Salvar saída</button>
