@@ -13,6 +13,7 @@ import NewExpense from "../pages/NewExpense";
 
 export function RouteProvider() {
   const [user, setUser] = useStickyState({}, "user");
+  const [refresh, setRefresh] = useState(true);
   return (
     <Router>
       <ThemeProvider theme={lightTheme}>
@@ -20,9 +21,9 @@ export function RouteProvider() {
         <Routes>
           <Route path="/" element={<SignIn setUser={setUser} />} />
           <Route path="/cadastro" element={<SignUp />} />
-          <Route path="/home" element={<Home user={user} />} />
-          <Route path="/nova-entrada" element={<NewIncome user={user} />} />
-          <Route path="/nova-saida" element={<NewExpense user={user} />} />
+          <Route path="/home" element={<Home user={user} refresh={refresh} setRefresh={setRefresh} />} />
+          <Route path="/nova-entrada" element={<NewIncome user={user} setRefresh={setRefresh} />} />
+          <Route path="/nova-saida" element={<NewExpense user={user} setRefresh={setRefresh} />} />
         </Routes>
       </ThemeProvider>
     </Router>

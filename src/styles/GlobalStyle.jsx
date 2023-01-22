@@ -61,7 +61,7 @@ html, body {
 	font-weight: 400;
 	font-size: 32px;
 	line-height: 50px;
-  color: ${(props) => props.theme.title};
+  color: ${(props) => props.theme.text};
  }
 
  h2 {

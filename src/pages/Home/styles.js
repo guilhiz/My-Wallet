@@ -55,12 +55,14 @@ export const Balance = styled.div`
   width: 100%;
   margin-top: 12px;
   > p {
-    font-weight: 700;
     font-size: 17px;
     line-height: 20px;
+    color: ${props => props.theme.text};
+    font-family: 'Saira Stencil One';
   }
   >span {
     color: ${props => props.switchColor ? "#03AC00" : "#C70000"};
+    font-weight: 700;
   }
 `;
 

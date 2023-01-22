@@ -15,6 +15,7 @@ export const Content = styled.div`
   h1 {
     margin-top: 120px;
     margin-bottom: 24px;
+    color: ${(props) => props.theme.title};
   }
 
   p {
