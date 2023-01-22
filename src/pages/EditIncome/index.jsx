@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { ArrowCircleLeft } from "phosphor-react";
 import * as S from "./styles";
 
-function NewIncome({ user, setRefresh }) {
+function EditIncome({ user, setRefresh }) {
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
 
@@ -26,7 +26,7 @@ function NewIncome({ user, setRefresh }) {
     <S.Container>
       <S.Content>
         <S.Header>
-          <h2>Nova entrada</h2>
+          <h2>Editar entrada</h2>
           <div onClick={() => navigate("/home")}>
             <ArrowCircleLeft size={32} color="#ffffff" />
           </div>
@@ -39,11 +39,11 @@ function NewIncome({ user, setRefresh }) {
             {...register("description", { required: true, minLength: 3, maxLength: 50 })}
             placeholder="Descrição"
           />
-          <button type="submit">Salvar entrada</button>
+          <button type="submit">Atualizar entrada</button>
         </form>
       </S.Content>
     </S.Container>
   );
 }
 
-export default NewIncome;
+export default EditIncome;

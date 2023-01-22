@@ -10,6 +10,7 @@ import SignUp from "../pages/SignUp";
 import Home from "../pages/Home";
 import NewIncome from "../pages/NewIncome";
 import NewExpense from "../pages/NewExpense";
+import EditIncome from "../pages/EditIncome";
 
 export function RouteProvider() {
   const [user, setUser] = useStickyState({}, "user");
@@ -24,6 +25,8 @@ export function RouteProvider() {
           <Route path="/home" element={<Home user={user} refresh={refresh} setRefresh={setRefresh} />} />
           <Route path="/nova-entrada" element={<NewIncome user={user} setRefresh={setRefresh} />} />
           <Route path="/nova-saida" element={<NewExpense user={user} setRefresh={setRefresh} />} />
+          <Route path="/editar-entrada/:id" element={<EditIncome user={user} setRefresh={setRefresh} />} />
+          <Route path="/editar-saida/:id" element={<EditIncome user={user} setRefresh={setRefresh} />} />
         </Routes>
       </ThemeProvider>
     </Router>

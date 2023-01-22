@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { api } from "../../services";
 import { Trash } from "phosphor-react";
 import { confirmAlert } from "react-confirm-alert";
@@ -8,6 +9,7 @@ import * as S from "./styles";
 
 function Records(props) {
   const { value, description, date, type, id, user, setRefresh } = props;
+  const navigate = useNavigate()
 
   const handleClick = () => {
     const { token } = user;
@@ -33,11 +35,10 @@ function Records(props) {
     });
   };
 
-  const onClick = () => {};
 
   return (
     <S.Content>
-      <S.Description>
+      <S.Description onClick={() => navigate(`/editar-entrada/${id}`)}>
         <S.Date>{date}</S.Date>
         {description}
       </S.Description>
