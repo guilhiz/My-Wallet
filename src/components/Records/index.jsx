@@ -9,7 +9,7 @@ import * as S from "./styles";
 
 function Records(props) {
   const { value, description, date, type, id, user, setRefresh } = props;
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleClick = () => {
     const { token } = user;
@@ -35,10 +35,18 @@ function Records(props) {
     });
   };
 
+  const handleEditRecord = () => {
+    if (type === "income") {
+      navigate(`/editar-entrada/${id}`);
+      return false;
+    }
+
+    navigate(`/editar-saida/${id}`);
+  };
 
   return (
     <S.Content>
-      <S.Description onClick={() => navigate(`/editar-entrada/${id}`)}>
+      <S.Description onClick={handleEditRecord}>
         <S.Date>{date}</S.Date>
         {description}
       </S.Description>

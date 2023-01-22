@@ -22,7 +22,7 @@ function Home({ user, refresh, setRefresh }) {
   const total = records.reduce((acc, cur) => {
     return cur.type === "income" ? acc + parseFloat(cur.value) : acc - parseFloat(cur.value);
   }, initialValue);
-  console.log(records);
+
   return (
     <S.Container>
       <S.Content>

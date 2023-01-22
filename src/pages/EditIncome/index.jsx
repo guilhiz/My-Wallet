@@ -1,20 +1,20 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { api } from "../../services";
-import { useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { ArrowCircleLeft } from "phosphor-react";
 import * as S from "./styles";
 
 function EditIncome({ user, setRefresh }) {
   const navigate = useNavigate();
+  const { id } = useParams();
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
     const { token } = user;
     const config = { headers: { Authorization: `Bearer ${token}` } };
-
     api
-      .post("/income", data, config)
+      .put(`/records/${id}`, data, config)
       .then(() => {
         setRefresh((current) => !current);
         navigate("/home");
