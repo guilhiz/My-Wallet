@@ -62,6 +62,7 @@ html, body {
 	font-size: 32px;
 	line-height: 50px;
   color: ${(props) => props.theme.text};
+	text-shadow: 0px 4px 2px rgba(255, 255, 255, 0.4);
  }
 
  h2 {
