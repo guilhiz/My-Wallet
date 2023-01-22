@@ -43,7 +43,7 @@ export const Erro = styled.div`
   line-height: 18px;
   text-shadow: 1px 1px 1px #000;
   color: #fafafa;
-  margin: -11px 0px 16px;
+  margin: -10px 0px 16px;
   span {
     margin-left: 8px;
   }

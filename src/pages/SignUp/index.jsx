@@ -29,25 +29,25 @@ function SignUp() {
           <input type="text" {...register("name")} placeholder="Nome" autocomplete="off" />
           {errors.name && (
             <S.Erro>
-              <Warning size={16} color="#ff0000" /> <span>{errors.name.message}</span>
+              <Warning size={16} color="#ff0000" weight="bold" /> <span>{errors.name.message}</span>
             </S.Erro>
           )}
           <input type="email" {...register("email")} placeholder="E-mail" autocomplete="off" />
           {errors.email && (
             <S.Erro>
-              <Warning size={16} color="#ff0000" /> <span>{errors.email.message}</span>
+              <Warning size={16} color="#ff0000" weight="bold" /> <span>{errors.email.message}</span>
             </S.Erro>
           )}
           <input type="password" {...register("password")} placeholder="Senha" />
           {errors.password && (
             <S.Erro>
-              <Warning size={16} color="#ff0000" /> <span>{errors.password.message}</span>
+              <Warning size={16} color="#ff0000" weight="bold" /> <span>{errors.password.message}</span>
             </S.Erro>
           )}
           <input type="password" {...register("confirmPassword")} placeholder="Confirme a senha" />
           {errors.confirmPassword && (
             <S.Erro>
-              <Warning size={16} color="#ff0000" /> <span>{errors.confirmPassword.message}</span>
+              <Warning size={16} color="#ff0000" weight="bold" /> <span>{errors.confirmPassword.message}</span>
             </S.Erro>
           )}
           <button type="submit">Cadastrar</button>
