@@ -36,15 +36,8 @@ function Records(props) {
   };
 
   const handleEditRecord = () => {
-    if (type === "income") {
-      navigate(`/editar-entrada/${id}`, {
-        state: { description, value},
-      });
-      return false;
-    }
-
-    navigate(`/editar-saida/${id}`, {
-      state: { description, value},
+    navigate(`/editar-registro/${id}`, {
+      state: { description, value, type},
     });
   };
 

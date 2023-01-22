@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { PlusCircle, SignOut, MinusCircle } from "phosphor-react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { api } from "../../services";
 import * as S from "./styles";
 import Records from "../../components/Records";
 
 function Home({ user, refresh, setRefresh }) {
   const [records, setRecords] = useState([]);
-
+  const navigate = useNavigate();
+  const initialValue = 0;
+  const total = records.reduce((acc, cur) => {
+    return cur.type === "income" ? acc + parseFloat(cur.value) : acc - parseFloat(cur.value);
+  }, initialValue);
 
   useEffect(() => {
     const { token } = user;
@@ -18,10 +22,11 @@ function Home({ user, refresh, setRefresh }) {
       .catch((err) => console.log(err));
   }, [refresh]);
 
-  const initialValue = 0;
-  const total = records.reduce((acc, cur) => {
-    return cur.type === "income" ? acc + parseFloat(cur.value) : acc - parseFloat(cur.value);
-  }, initialValue);
+  const handleClick = (type) => {
+    navigate("/novo-registro", {
+      state: { type },
+    });
+  };
 
   return (
     <S.Container>
@@ -56,22 +61,18 @@ function Home({ user, refresh, setRefresh }) {
           )}
         </S.Main>
         <S.Footer>
-          <Link to={"/nova-entrada"}>
-            <S.Button>
-              <div>
-                <PlusCircle size={24} color="#ffffff" />{" "}
-              </div>
-              <p>Nova entrada</p>
-            </S.Button>
-          </Link>
-          <Link to={"/nova-saida"}>
-            <S.Button>
-              <div>
-                <MinusCircle size={24} color="#ffffff" />
-              </div>
-              <p>Nova Saída</p>
-            </S.Button>
-          </Link>
+          <S.Button onClick={() => handleClick("income")}>
+            <div>
+              <PlusCircle size={24} color="#ffffff" />{" "}
+            </div>
+            <p>Nova entrada</p>
+          </S.Button>
+          <S.Button onClick={() => handleClick("expense")}>
+            <div>
+              <MinusCircle size={24} color="#ffffff" />
+            </div>
+            <p>Nova Saída</p>
+          </S.Button>
         </S.Footer>
       </S.Content>
     </S.Container>

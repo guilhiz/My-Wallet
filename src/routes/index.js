@@ -8,10 +8,8 @@ import { lightTheme } from "../theme";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
 import Home from "../pages/Home";
-import NewIncome from "../pages/NewIncome";
-import NewExpense from "../pages/NewExpense";
-import EditIncome from "../pages/EditIncome";
-import EditExpense from "../pages/EditExpense";
+import NewRecord from "../pages/NewRecord";
+import EditRecord from "../pages/EditRecord";
 
 export function RouteProvider() {
   const [user, setUser] = useStickyState({}, "user");
@@ -24,10 +22,8 @@ export function RouteProvider() {
           <Route path="/" element={<SignIn setUser={setUser} />} />
           <Route path="/cadastro" element={<SignUp />} />
           <Route path="/home" element={<Home user={user} refresh={refresh} setRefresh={setRefresh} />} />
-          <Route path="/nova-entrada" element={<NewIncome user={user} setRefresh={setRefresh} />} />
-          <Route path="/nova-saida" element={<NewExpense user={user} setRefresh={setRefresh} />} />
-          <Route path="/editar-entrada/:id" element={<EditIncome user={user} setRefresh={setRefresh} />} />
-          <Route path="/editar-saida/:id" element={<EditExpense user={user} setRefresh={setRefresh} />} />
+          <Route path="/novo-registro" element={<NewRecord user={user} setRefresh={setRefresh} />} />
+          <Route path="/editar-registro/:id" element={<EditRecord user={user} setRefresh={setRefresh} />} />
         </Routes>
       </ThemeProvider>
     </Router>

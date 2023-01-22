@@ -1,15 +1,16 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { api } from "../../services";
-import { useParams, useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { ArrowCircleLeft } from "phosphor-react";
 import * as S from "./styles";
 
-function EditIncome({ user, setRefresh }) {
+function EditRecord({ user, setRefresh }) {
   const navigate = useNavigate();
   const { id } = useParams();
   const location = useLocation();
-  const { description, value } = location.state;
+  const { description, value, type } = location.state;
+  const isIncome = type === "income";
   const { register, handleSubmit } = useForm({
     defaultValues: {
       value: value,
@@ -20,6 +21,7 @@ function EditIncome({ user, setRefresh }) {
   const onSubmit = (data) => {
     const { token } = user;
     const config = { headers: { Authorization: `Bearer ${token}` } };
+
     api
       .put(`/records/${id}`, data, config)
       .then(() => {
@@ -33,7 +35,7 @@ function EditIncome({ user, setRefresh }) {
     <S.Container>
       <S.Content>
         <S.Header>
-          <h2>Editar entrada</h2>
+          <h2>{`Editar ${isIncome ? "entrada" : "saída"} `}</h2>
           <div onClick={() => navigate("/home")}>
             <ArrowCircleLeft size={32} color="#ffffff" />
           </div>
@@ -46,11 +48,11 @@ function EditIncome({ user, setRefresh }) {
             {...register("description", { required: true, minLength: 3, maxLength: 50 })}
             placeholder="Descrição"
           />
-          <button type="submit">Atualizar entrada</button>
+          <button type="submit">{`Atualizar ${isIncome ? "entrada" : "saída"}`}</button>
         </form>
       </S.Content>
     </S.Container>
   );
 }
 
-export default EditIncome;
+export default EditRecord;
