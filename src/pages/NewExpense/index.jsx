@@ -2,9 +2,10 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { api } from "../../services";
 import { useNavigate } from "react-router-dom";
+import { ArrowCircleLeft } from "phosphor-react";
 import * as S from "./styles";
 
-function NewExpense({ user }) {
+function NewExpense({ user, setRefresh }) {
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
 
@@ -14,13 +15,21 @@ function NewExpense({ user }) {
     console.log(data);
     api
       .post("/expense", data, config)
-      .then(() => navigate("/home"))
+      .then(() => {
+        setRefresh((current) => !current);
+        navigate("/home");
+      })
       .catch((err) => console.log(`ocorreu um erro ${err}`));
   };
   return (
     <S.Container>
       <S.Content>
-        <h2>Nova saída</h2>
+        <S.Header>
+          <h2>Nova saída</h2>
+          <div onClick={() => navigate("/home")}>
+            <ArrowCircleLeft size={32} color="#ffffff" />
+          </div>
+        </S.Header>
         <form onSubmit={handleSubmit(onSubmit)}>
           <input type="text" {...register("value", { required: true, minLength: 2 })} placeholder="Valor" />
           <input

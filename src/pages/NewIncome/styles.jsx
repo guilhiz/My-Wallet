@@ -11,8 +11,17 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+`;
 
-  h2 {
-    margin: 20px 0px 40px;
+export const Header = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 0px 40px;
+  div {
+    cursor: pointer;
+    :hover {
+      opacity: 0.6;
+    }
   }
 `;
