@@ -31,11 +31,11 @@ export const Main = styled.main`
   flex-direction: column;
   justify-content: space-between;
   background-color: #ffffff;
-  width: 326px;
+  width: 100%;
   height: 446px;
   border-radius: 5px;
   margin-bottom: 13px;
-  padding: 23px 12px 12px ;
+  padding: 23px 12px 12px;
   overflow: auto;
   position: relative;
   h3 {
@@ -57,11 +57,11 @@ export const Balance = styled.div`
   > p {
     font-size: 17px;
     line-height: 20px;
-    color: ${props => props.theme.text};
-    font-family: 'Saira Stencil One';
+    color: ${(props) => props.theme.text};
+    font-family: "Saira Stencil One";
   }
-  >span {
-    color: ${props => props.switchColor ? "#03AC00" : "#C70000"};
+  > span {
+    color: ${(props) => (props.switchColor ? "#03AC00" : "#C70000")};
     font-weight: 700;
   }
 `;

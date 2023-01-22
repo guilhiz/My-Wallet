@@ -1,14 +1,21 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { api } from "../../services";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { ArrowCircleLeft } from "phosphor-react";
 import * as S from "./styles";
 
 function EditExpense({ user, setRefresh }) {
   const navigate = useNavigate();
   const { id } = useParams();
-  const { register, handleSubmit } = useForm();
+  const location = useLocation();
+  const { description, value } = location.state;
+  const { register, handleSubmit } = useForm({
+    defaultValues: {
+      value: value,
+      description: description,
+    },
+  });
 
   const onSubmit = (data) => {
     const { token } = user;

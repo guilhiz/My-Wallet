@@ -37,11 +37,15 @@ function Records(props) {
 
   const handleEditRecord = () => {
     if (type === "income") {
-      navigate(`/editar-entrada/${id}`);
+      navigate(`/editar-entrada/${id}`, {
+        state: { description, value},
+      });
       return false;
     }
 
-    navigate(`/editar-saida/${id}`);
+    navigate(`/editar-saida/${id}`, {
+      state: { description, value},
+    });
   };
 
   return (
@@ -51,7 +55,7 @@ function Records(props) {
         {description}
       </S.Description>
       <S.Value switchColor={type === "income"}>
-        <p> {value.replace(".", ",")}</p>
+        <p>{value.replace(".", ",")}</p>
         <div onClick={handleClick}>
           <Trash size={18} color="#010101" />
         </div>
