@@ -10,7 +10,6 @@ export const Description = styled.p`
   font-size: 16px;
   line-height: 19px;
   color: ${(props) => props.theme.text};
-  /* word-break: break-word; */
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

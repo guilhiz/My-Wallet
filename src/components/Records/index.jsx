@@ -9,7 +9,7 @@ function Records(props) {
         <S.Date>{date}</S.Date>
         {description}
       </S.Description>
-      <S.Value switchColor={type === "income"}>{value}</S.Value>
+      <S.Value switchColor={type === "income"}>{value.replace('.', ',')}</S.Value>
     </S.Content>
   );
 }

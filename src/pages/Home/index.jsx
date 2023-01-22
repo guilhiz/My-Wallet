@@ -17,6 +17,10 @@ function Home({ user }) {
       .catch((err) => console.log(err));
   }, []);
 
+  const total = records.reduce((acc, cur) => {
+    return cur.type === "income" ? acc + parseFloat(cur.value) : acc - parseFloat(cur.value);
+  }, 0);
+
   return (
     <S.Container>
       <S.Content>
@@ -27,11 +31,18 @@ function Home({ user }) {
           </div>
         </S.Header>
         <S.Main>
-          {records?.length < 1 && <h3>Ainda não registros de entrada ou saída</h3>}
-          {records?.length > 0 &&
-            records.map((r) => (
-              <Records key={r._id} value={r.value} description={r.description} date={r.date} type={r.type} />
-            ))}
+          <div>
+            {records?.length < 1 && <h3>Ainda não registros de entrada ou saída</h3>}
+            {records?.length > 0 &&
+              records.map((r) => (
+                <Records key={r._id} value={r.value} description={r.description} date={r.date} type={r.type} />
+              ))}
+          </div>
+          {records?.length > 0 && (
+            <S.Balance switchColor={total >= 0}>
+              <p>Saldo</p> <span>{total.toFixed(2).replace('.', ',')}</span>
+            </S.Balance>
+          )}
         </S.Main>
         <S.Footer>
           <Link to={"/nova-entrada"}>

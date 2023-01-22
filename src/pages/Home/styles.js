@@ -29,12 +29,15 @@ export const Header = styled.header`
 export const Main = styled.main`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   background-color: #ffffff;
   width: 326px;
   height: 446px;
   border-radius: 5px;
   margin-bottom: 13px;
-  padding: 23px 12px;
+  padding: 23px 12px 12px ;
+  overflow: auto;
+  position: relative;
   h3 {
     margin: 0px auto;
     text-align: center;
@@ -43,6 +46,21 @@ export const Main = styled.main`
     line-height: 23px;
     color: ${(props) => props.theme.secondary};
     margin-top: 50%;
+  }
+`;
+
+export const Balance = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 12px;
+  > p {
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 20px;
+  }
+  >span {
+    color: ${props => props.switchColor ? "#03AC00" : "#C70000"};
   }
 `;
 
