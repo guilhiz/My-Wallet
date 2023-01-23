@@ -46,7 +46,7 @@ function SignIn({ setUser }) {
               <Warning size={16} color="#ff0000" weight="bold" /> <span>{errors.password.message}</span>
             </S.Erro>
           )}
-          <button type="submit">Entrar</button>
+          <S.Button type="submit"><span>Entrar</span></S.Button>
         </S.Form>
         <Link to={"/cadastro"}>
           <p>Primeira vez? Cadastre-se!</p>

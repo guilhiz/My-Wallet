@@ -80,6 +80,7 @@ export const Button = styled.button`
   height: 114px;
   padding: 15px;
   cursor: pointer;
+  background: linear-gradient(to right, #8e2de2, #a328d6);
   div {
     width: 24px;
   }

@@ -50,7 +50,9 @@ function SignUp() {
               <Warning size={16} color="#ff0000" weight="bold" /> <span>{errors.confirmPassword.message}</span>
             </S.Erro>
           )}
-          <button type="submit">Cadastrar</button>
+          <S.Button type="submit">
+            <span>Cadastrar</span>{" "}
+          </S.Button>
         </S.Form>
         <Link to={"/"}>
           <p>Já tem uma conta? Entre agora!</p>

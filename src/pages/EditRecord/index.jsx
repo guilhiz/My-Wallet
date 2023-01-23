@@ -60,7 +60,9 @@ function EditRecord({ user, setRefresh }) {
               <Warning size={16} color="#ff0000" weight="bold" /> <span>{errors.description.message}</span>
             </S.Erro>
           )}
-          <button type="submit">{`Atualizar ${isIncome ? "entrada" : "saída"}`}</button>
+          <S.Button type="submit">
+            <span>{`Atualizar ${isIncome ? "entrada" : "saída"}`}</span>
+          </S.Button>
         </form>
       </S.Content>
     </S.Container>

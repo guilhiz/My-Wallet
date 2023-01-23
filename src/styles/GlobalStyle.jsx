@@ -49,11 +49,8 @@ html, body {
 }
 
  button {
-	:hover {
-		opacity: 0.7;
-	}
 	:active {
-		scale: 0.97;
+		scale: 0.95;
 	}
  }
  h1 {
@@ -70,6 +67,8 @@ html, body {
 	font-size: 26px;
 	line-height: 31px;
 	color: ${(props) => props.theme.title};
+	letter-spacing: 0.05em;
+
 }
 
 input {
@@ -91,7 +90,8 @@ input {
 button {
 	width: 326px;
 	height: 46px;
-	background: ${(props) => props.theme.button};
+	background: linear-gradient(to right, #8e2de2, #4a00e0);
+
 	border-radius: 5px;
 	border: none;
 	cursor: pointer;
