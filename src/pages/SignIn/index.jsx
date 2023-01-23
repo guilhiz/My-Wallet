@@ -33,7 +33,7 @@ function SignIn({ setUser }) {
           <input type="text" {...register("email", { required: true, maxLength: 50 })} placeholder="E-mail" />
           {errors.email && (
             <S.Erro>
-              <Warning size={16} color="#ff0000" /> <span>{errors.email.message}</span>
+              <Warning size={16} color="#ff0000" weight="bold" /> <span>{errors.email.message}</span>
             </S.Erro>
           )}
           <input
@@ -43,7 +43,7 @@ function SignIn({ setUser }) {
           />
           {errors.password && (
             <S.Erro>
-              <Warning size={16} color="#ff0000" /> <span>{errors.password.message}</span>
+              <Warning size={16} color="#ff0000" weight="bold" /> <span>{errors.password.message}</span>
             </S.Erro>
           )}
           <button type="submit">Entrar</button>

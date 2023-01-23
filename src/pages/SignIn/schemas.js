@@ -1,7 +1,7 @@
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-const signUpSchema = yup.object().shape({
+const signInSchema = yup.object().shape({
   email: yup
     .string()
     .required("Por favor, insira um email")
@@ -14,4 +14,4 @@ const signUpSchema = yup.object().shape({
     .max(16, "Deve ter no máximo 16 caracteres"),
 });
 
-export const formOptions = { resolver: yupResolver(signUpSchema) };
+export const formOptions = { resolver: yupResolver(signInSchema) };
