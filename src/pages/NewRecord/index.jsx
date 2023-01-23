@@ -19,15 +19,16 @@ function NewRecord({ user, setRefresh }) {
 
   const onSubmit = (data) => {
     const { token } = user;
+    const body = { value: data.value.replace(".", "").replace(",", ""), description: data.description };
     const config = { headers: { Authorization: `Bearer ${token}` } };
 
     api
-      .post(`/${isIncome ? "income" : "expense"}`, data, config)
+      .post(`/${isIncome ? "income" : "expense"}`, body, config)
       .then(() => {
         setRefresh((current) => !current);
         navigate("/home");
       })
-      .catch((err) => console.log(`ocorreu um erro ${err}`));
+      .catch((err) => console.log(err));
   };
 
   return (

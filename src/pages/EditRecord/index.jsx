@@ -26,10 +26,11 @@ function EditRecord({ user, setRefresh }) {
 
   const onSubmit = (data) => {
     const { token } = user;
+    const body = { value: data.value.replace(".", "").replace(",", ""), description: data.description };
     const config = { headers: { Authorization: `Bearer ${token}` } };
 
     api
-      .put(`/records/${id}`, data, config)
+      .put(`/records/${id}`, body, config)
       .then(() => {
         setRefresh((current) => !current);
         navigate("/home");
