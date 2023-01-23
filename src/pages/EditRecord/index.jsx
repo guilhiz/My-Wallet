@@ -2,7 +2,8 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { api } from "../../services";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
-import { ArrowCircleLeft } from "phosphor-react";
+import { ArrowCircleLeft, Warning } from "phosphor-react";
+import { formOptions } from "./schemas";
 import * as S from "./styles";
 
 function EditRecord({ user, setRefresh }) {
@@ -11,11 +12,16 @@ function EditRecord({ user, setRefresh }) {
   const location = useLocation();
   const { description, value, type } = location.state;
   const isIncome = type === "income";
-  const { register, handleSubmit } = useForm({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
     defaultValues: {
       value: value,
       description: description,
     },
+    ...formOptions,
   });
 
   const onSubmit = (data) => {
@@ -42,12 +48,18 @@ function EditRecord({ user, setRefresh }) {
         </S.Header>
 
         <form onSubmit={handleSubmit(onSubmit)}>
-          <input type="text" {...register("value", { required: true, minLength: 2 })} placeholder="Valor" />
-          <input
-            type="text"
-            {...register("description", { required: true, minLength: 3, maxLength: 50 })}
-            placeholder="Descrição"
-          />
+          <input type="text" {...register("value")} placeholder="Valor" />
+          {errors.value && (
+            <S.Erro>
+              <Warning size={16} color="#ff0000" weight="bold" /> <span>{errors.value.message}</span>
+            </S.Erro>
+          )}
+          <input type="text" {...register("description")} placeholder="Descrição" />
+          {errors.description && (
+            <S.Erro>
+              <Warning size={16} color="#ff0000" weight="bold" /> <span>{errors.description.message}</span>
+            </S.Erro>
+          )}
           <button type="submit">{`Atualizar ${isIncome ? "entrada" : "saída"}`}</button>
         </form>
       </S.Content>

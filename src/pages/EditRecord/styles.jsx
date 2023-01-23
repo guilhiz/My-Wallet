@@ -25,3 +25,17 @@ export const Header = styled.div`
     }
   }
 `;
+
+export const Erro = styled.div`
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 18px;
+  text-shadow: 1px 1px 1px #000;
+  color: #ff0000;
+  margin: -10px 0px 16px;
+  span {
+    margin-left: 8px;
+  }
+`;
