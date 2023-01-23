@@ -30,23 +30,27 @@ function SignIn({ setUser }) {
       <S.Content>
         <h1>MyWallet</h1>
         <S.Form onSubmit={handleSubmit(onSubmit)}>
-          <input type="text" {...register("email", { required: true, maxLength: 50 })} placeholder="E-mail" />
+          <S.InputGroup>
+            <input type="email" {...register("email")} placeholder="E-mail" />
+            <label>E-mail</label>
+          </S.InputGroup>
           {errors.email && (
             <S.Erro>
               <Warning size={16} color="#ff0000" weight="bold" /> <span>{errors.email.message}</span>
             </S.Erro>
           )}
-          <input
-            type="text"
-            {...register("password", { required: true, minLength: 4, maxLength: 16 })}
-            placeholder="Senha"
-          />
+          <S.InputGroup>
+            <input type="text" {...register("password")} placeholder="Senha" />
+            <label>Senha</label>
+          </S.InputGroup>
           {errors.password && (
             <S.Erro>
               <Warning size={16} color="#ff0000" weight="bold" /> <span>{errors.password.message}</span>
             </S.Erro>
           )}
-          <S.Button type="submit"><span>Entrar</span></S.Button>
+          <S.Button type="submit">
+            <span>Entrar</span>
+          </S.Button>
         </S.Form>
         <Link to={"/cadastro"}>
           <p>Primeira vez? Cadastre-se!</p>

@@ -77,8 +77,14 @@ input {
   background: ${(props) => props.theme.input};
   border-radius: 5px;
   margin-bottom: 13px;
-  border: none;
+	border: none;
 	padding-left: 15px;
+	font-size: 20px;
+  line-height: 23px;
+
+	:focus {
+		outline: none;
+	}
   ::placeholder {
     font-size: 20px;
     line-height: 23px;

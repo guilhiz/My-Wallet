@@ -26,25 +26,37 @@ function SignUp() {
       <S.Content>
         <h1>MyWallet</h1>
         <S.Form onSubmit={handleSubmit(onSubmit)}>
-          <input type="text" {...register("name")} placeholder="Nome" autocomplete="off" />
+          <S.InputGroup>
+            <input type="text" {...register("name")} placeholder="Nome" autoComplete="off" />
+            <label>Nome</label>
+          </S.InputGroup>
           {errors.name && (
             <S.Erro>
               <Warning size={16} color="#ff0000" weight="bold" /> <span>{errors.name.message}</span>
             </S.Erro>
           )}
-          <input type="email" {...register("email")} placeholder="E-mail" autocomplete="off" />
+          <S.InputGroup>
+            <input type="email" {...register("email")} placeholder="E-mail" autoComplete="off" />
+            <label>E-mail</label>
+          </S.InputGroup>
           {errors.email && (
             <S.Erro>
               <Warning size={16} color="#ff0000" weight="bold" /> <span>{errors.email.message}</span>
             </S.Erro>
           )}
-          <input type="password" {...register("password")} placeholder="Senha" />
+          <S.InputGroup>
+            <input type="password" {...register("password")} placeholder="Senha" />
+            <label>Senha</label>
+          </S.InputGroup>
           {errors.password && (
             <S.Erro>
               <Warning size={16} color="#ff0000" weight="bold" /> <span>{errors.password.message}</span>
             </S.Erro>
           )}
-          <input type="password" {...register("confirmPassword")} placeholder="Confirme a senha" />
+          <S.InputGroup>
+            <input type="password" {...register("confirmPassword")} placeholder="Confirme a senha" />
+            <label>Confirme a senha</label>
+          </S.InputGroup>
           {errors.confirmPassword && (
             <S.Erro>
               <Warning size={16} color="#ff0000" weight="bold" /> <span>{errors.confirmPassword.message}</span>

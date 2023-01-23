@@ -45,7 +45,7 @@ export const Erro = styled.div`
   line-height: 18px;
   text-shadow: 1px 1px 1px #000;
   color: #ff0000;
-  margin: -10px 0px 16px;
+  margin: -15px 0px 20px;
   span {
     margin-left: 8px;
   }
@@ -90,5 +90,62 @@ export const Button = styled.button`
 
   :hover::before {
     transform: translate3d(100%, 0, 0);
+  }
+`;
+
+export const InputGroup = styled.div`
+  position: relative;
+  margin-bottom: 10px;
+  > input {
+    border: solid 1.5px #9e9e9e;
+    border-radius: 5px;
+    background: none;
+    padding: 1rem;
+    color: #f5f5f5;
+    transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  > input::placeholder {
+    color: transparent;
+  }
+
+  > input:placeholder-shown ~ label {
+    top: 20px;
+    background: none;
+    border-right: none;
+    border-left: none;
+  }
+
+  > label {
+    background-color: #8c11be;
+    border-left: 1px solid silver;
+    border-right: 1px solid silver;
+    color: #c7c7c7;
+    display: block;
+    font-size: 1em;
+    margin-left: 10px;
+    padding: 0 10px;
+    pointer-events: none;
+    position: absolute;
+    top: -7px;
+    transition: 0.2s;
+  }
+
+  > input:focus {
+    border: 1px solid #fff !important;
+    outline: none;
+  }
+
+  > input:focus ~ label {
+    background-color: #8c11be;
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
+    color: #fff;
+    font-size: 1em;
+    margin-left: 10px;
+    padding: 0 10px;
+    position: absolute;
+    top: -7px;
+    transition: 0.2s;
   }
 `;

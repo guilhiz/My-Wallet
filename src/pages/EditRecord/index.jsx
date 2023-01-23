@@ -48,13 +48,19 @@ function EditRecord({ user, setRefresh }) {
         </S.Header>
 
         <form onSubmit={handleSubmit(onSubmit)}>
-          <input type="text" {...register("value")} placeholder="Valor" />
+          <S.InputGroup>
+            <input type="text" {...register("value")} placeholder="Valor" />
+            <label>Valor</label>
+          </S.InputGroup>
           {errors.value && (
             <S.Erro>
               <Warning size={16} color="#ff0000" weight="bold" /> <span>{errors.value.message}</span>
             </S.Erro>
           )}
-          <input type="text" {...register("description")} placeholder="Descrição" />
+          <S.InputGroup>
+            <input type="text" {...register("description")} placeholder="Descrição" />
+            <label>Descrição</label>
+          </S.InputGroup>
           {errors.description && (
             <S.Erro>
               <Warning size={16} color="#ff0000" weight="bold" /> <span>{errors.description.message}</span>
