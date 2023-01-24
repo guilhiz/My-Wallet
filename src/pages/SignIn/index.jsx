@@ -53,7 +53,7 @@ function SignIn({ setUser }) {
             </S.Erro>
           )}
           <S.InputGroup>
-            <input type="text" {...register("password")} placeholder="Senha" />
+            <input type="password" {...register("password")} placeholder="Senha" />
             <label>Senha</label>
           </S.InputGroup>
           {errors.password && (
