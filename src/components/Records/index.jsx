@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { api } from "../../services";
 import { Trash } from "phosphor-react";
 import { confirmAlert } from "react-confirm-alert";
+import { useFormatter } from "../../hooks";
 import "react-confirm-alert/src/react-confirm-alert.css";
 
 import * as S from "./styles";
@@ -48,7 +49,7 @@ function Records(props) {
         {description}
       </S.Description>
       <S.Value switchColor={type === "income"}>
-        <p>{value.replace(".", ",")}</p>
+        <p>{useFormatter.format(value).replace("R$", "")}</p>
         <div onClick={handleClick}>
           <Trash size={18} color="#010101" />
         </div>

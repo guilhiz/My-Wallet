@@ -3,15 +3,13 @@ import { PlusCircle, SignOut, MinusCircle } from "phosphor-react";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../services";
 import * as S from "./styles";
+import { useFormatter } from "../../hooks";
 import Records from "../../components/Records";
 
 function Home({ user, refresh, setRefresh }) {
   const [records, setRecords] = useState([]);
   const navigate = useNavigate();
   const initialValue = 0;
-  const total = records.reduce((acc, cur) => {
-    return cur.type === "income" ? acc + parseFloat(cur.value) : acc - parseFloat(cur.value);
-  }, initialValue);
 
   useEffect(() => {
     const { token } = user;
@@ -27,6 +25,10 @@ function Home({ user, refresh, setRefresh }) {
       state: { type },
     });
   };
+
+  const total = records.reduce((acc, cur) => {
+    return cur.type === "income" ? acc + parseFloat(cur.value) : acc - parseFloat(cur.value);
+  }, initialValue);
 
   return (
     <S.Container>
@@ -56,7 +58,7 @@ function Home({ user, refresh, setRefresh }) {
           </div>
           {records?.length > 0 && (
             <S.Balance switchColor={total >= 0}>
-              <p>Saldo</p> <span>{total.toFixed(2).replace(".", ",")}</span>
+              <p>Saldo</p> <span>{useFormatter.format(total)}</span>
             </S.Balance>
           )}
         </S.Main>

@@ -9,3 +9,8 @@ export function useStickyState(defaultValue, key) {
   }, [key, value]);
   return [value, setValue];
 }
+
+export const useFormatter = new Intl.NumberFormat("pt-BR", {
+  style: "currency",
+  currency: "BRL",
+});
