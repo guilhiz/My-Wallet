@@ -39,14 +39,17 @@ function Home({ user, refresh, setRefresh }) {
     return cur.type === "income" ? acc + parseFloat(cur.value) : acc - parseFloat(cur.value);
   }, initialValue);
 
-
+  const signOut = () => {
+    localStorage.clear();
+    navigate("/");
+  };
 
   return (
     <S.Container>
       <S.Content>
         <S.Header>
           <h2>Olá, {user.name}</h2>
-          <div>
+          <div onClick={signOut}>
             <SignOut size={32} color="#ffffff" />
           </div>
         </S.Header>
