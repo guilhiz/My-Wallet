@@ -1,6 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { api } from "../../services";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useNavigate, useLocation } from "react-router-dom";
 import { ArrowCircleLeft, Warning } from "phosphor-react";
 import { formOptions } from "./schemas";
@@ -14,8 +16,22 @@ function NewRecord({ user, setRefresh }) {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm(formOptions);
+
+  const notify = () => {
+    toast.success(`${isIncome ? "Entrada" : "Saída"}: criada com sucesso!`, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+  };
 
   const onSubmit = (data) => {
     const { token } = user;
@@ -26,7 +42,8 @@ function NewRecord({ user, setRefresh }) {
       .post(`/${isIncome ? "income" : "expense"}`, body, config)
       .then(() => {
         setRefresh((current) => !current);
-        navigate("/home");
+        notify();
+        reset();
       })
       .catch((err) => console.log(err));
   };
@@ -65,6 +82,7 @@ function NewRecord({ user, setRefresh }) {
           </S.Button>
         </form>
       </S.Content>
+      <ToastContainer />
     </S.Container>
   );
 }

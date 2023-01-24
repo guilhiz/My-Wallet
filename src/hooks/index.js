@@ -1,4 +1,6 @@
 import React from "react";
+
+
 export function useStickyState(defaultValue, key) {
   const [value, setValue] = React.useState(() => {
     const stickyValue = window.localStorage.getItem(key);
@@ -14,3 +16,5 @@ export const useFormatter = new Intl.NumberFormat("pt-BR", {
   style: "currency",
   currency: "BRL",
 });
+
+

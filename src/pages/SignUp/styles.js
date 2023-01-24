@@ -50,6 +50,8 @@ export const Erro = styled.div`
 `;
 
 export const Button = styled.button`
+  width: 326px;
+  height: 46px;
   outline: none;
   cursor: pointer;
   border: none;
@@ -79,11 +81,11 @@ export const Button = styled.button`
 
   ::before {
     content: "";
-    background: linear-gradient(to right, #8e2de2, #A328D6);
+    background: linear-gradient(to right, #8e2de2, #a328d6);
     width: 120%;
     left: -10%;
     transform: skew(30deg);
-    transition: transform 0.8s cubic-bezier(0.3, 1, 0.8, 1);
+    transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
   }
 
   :hover::before {

@@ -94,8 +94,6 @@ input {
 }
 
 button {
-	width: 326px;
-	height: 46px;
 	background: linear-gradient(to right, #8e2de2, #4a00e0);
 
 	border-radius: 5px;

@@ -1,6 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { api } from "../../services";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { ArrowCircleLeft, Warning } from "phosphor-react";
 import { formOptions } from "./schemas";
@@ -18,11 +20,24 @@ function EditRecord({ user, setRefresh }) {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      value: value,
+      value: Number(value).toFixed(0),
       description: description,
     },
     ...formOptions,
   });
+
+  const notify = () => {
+    toast.success(`${isIncome ? "Entrada" : "Saída"}: editada com sucesso!`, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+  };
 
   const onSubmit = (data) => {
     const { token } = user;
@@ -33,7 +48,7 @@ function EditRecord({ user, setRefresh }) {
       .put(`/records/${id}`, body, config)
       .then(() => {
         setRefresh((current) => !current);
-        navigate("/home");
+        notify();
       })
       .catch((err) => console.log(`ocorreu um erro ${err}`));
   };
@@ -72,6 +87,7 @@ function EditRecord({ user, setRefresh }) {
           </S.Button>
         </form>
       </S.Content>
+      <ToastContainer />
     </S.Container>
   );
 }
