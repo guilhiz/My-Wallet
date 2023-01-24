@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { PulseLoader } from "react-spinners";
 import { api } from "../../services";
 import { useForm } from "react-hook-form";
@@ -9,12 +9,19 @@ import * as S from "./styles";
 
 function SignIn({ setUser }) {
   const navigate = useNavigate();
+  const user = JSON?.parse(localStorage.getItem("user"));
   const [loading, setLoading] = useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm(formOptions);
+
+  useEffect(() => {
+    if (user?.token) {
+      navigate("/home");
+    }
+  }, []);
 
   const onSubmit = (data) => {
     setLoading(true);
