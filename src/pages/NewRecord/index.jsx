@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { api } from "../../services";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { PulseLoader } from "react-spinners";
 import { useNavigate, useLocation } from "react-router-dom";
 import { ArrowCircleLeft, Warning } from "phosphor-react";
 import { formOptions } from "./schemas";
 import * as S from "./styles";
 
 function NewRecord({ user, setRefresh }) {
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const { type } = location.state;
@@ -34,6 +36,7 @@ function NewRecord({ user, setRefresh }) {
   };
 
   const onSubmit = (data) => {
+    setLoading(true);
     const { token } = user;
     const body = { value: data.value.replace(".", "").replace(",", ""), description: data.description };
     const config = { headers: { Authorization: `Bearer ${token}` } };
@@ -44,8 +47,12 @@ function NewRecord({ user, setRefresh }) {
         setRefresh((current) => !current);
         notify();
         reset();
+        setLoading(false);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setLoading(false);
+        console.log(err);
+      });
   };
 
   return (
@@ -78,7 +85,10 @@ function NewRecord({ user, setRefresh }) {
             </S.Erro>
           )}
           <S.Button type="submit">
-            <span>{`Salvar ${isIncome ? "entrada" : "saída"}`}</span>
+            <span>
+              <PulseLoader color="#FFFFFF" loading={loading} margin={8} size={20} />
+              {!loading && `Salvar ${isIncome ? "entrada" : "saída"}`}
+            </span>
           </S.Button>
         </form>
       </S.Content>

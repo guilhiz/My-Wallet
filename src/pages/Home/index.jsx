@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { PlusCircle, SignOut, MinusCircle } from "phosphor-react";
+import { ClipLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../services";
 import * as S from "./styles";
@@ -7,7 +8,7 @@ import { useFormatter } from "../../hooks";
 import Records from "../../components/Records";
 
 function Home({ user, refresh, setRefresh }) {
-  const [records, setRecords] = useState([]);
+  const [records, setRecords] = useState(null);
   const navigate = useNavigate();
   const initialValue = 0;
 
@@ -20,6 +21,14 @@ function Home({ user, refresh, setRefresh }) {
       .catch((err) => console.log(err));
   }, [refresh]);
 
+  if (records === null) {
+    return (
+      <S.ContainerLoading>
+        <ClipLoader color="#ffffff" size={150} />
+      </S.ContainerLoading>
+    );
+  }
+
   const handleClick = (type) => {
     navigate("/novo-registro", {
       state: { type },
@@ -29,6 +38,8 @@ function Home({ user, refresh, setRefresh }) {
   const total = records.reduce((acc, cur) => {
     return cur.type === "income" ? acc + parseFloat(cur.value) : acc - parseFloat(cur.value);
   }, initialValue);
+
+
 
   return (
     <S.Container>

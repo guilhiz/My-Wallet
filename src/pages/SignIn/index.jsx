@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { PulseLoader } from "react-spinners";
 import { api } from "../../services";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
@@ -7,22 +8,27 @@ import { formOptions } from "./schemas";
 import * as S from "./styles";
 
 function SignIn({ setUser }) {
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm(formOptions);
 
-  const navigate = useNavigate();
-
   const onSubmit = (data) => {
+    setLoading(true);
     api
       .post("/sign-in", data)
       .then((res) => {
         setUser(res.data);
+        setLoading(false);
         navigate("/home");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setLoading(false);
+        console.log(err);
+      });
   };
 
   return (
@@ -49,7 +55,10 @@ function SignIn({ setUser }) {
             </S.Erro>
           )}
           <S.Button type="submit">
-            <span>Entrar</span>
+            <span>
+              <PulseLoader color="#FFFFFF" loading={loading} margin={8} size={20} />
+              {!loading && "Entrar"}
+            </span>
           </S.Button>
         </S.Form>
         <Link to={"/cadastro"}>

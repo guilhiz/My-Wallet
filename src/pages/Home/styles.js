@@ -7,6 +7,15 @@ export const Container = styled.div`
   margin: 0px auto;
 `;
 
+export const ContainerLoading = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-width: 20vw;
+  background-color: ${(props) => props.theme.background};
+`;
+
 export const Content = styled.div`
   display: flex;
   flex-direction: column;

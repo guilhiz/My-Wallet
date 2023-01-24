@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { PulseLoader } from "react-spinners";
 import { api } from "../../services";
 import { formOptions } from "./schemas";
 import { useForm } from "react-hook-form";
@@ -7,18 +8,26 @@ import { Warning } from "phosphor-react";
 import * as S from "./styles";
 
 function SignUp() {
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm(formOptions);
-  const navigate = useNavigate();
 
   const onSubmit = (data) => {
+    setLoading(true);
     api
       .post("/sign-up", data)
-      .then(() => navigate("/"))
-      .catch((err) => console.log(err));
+      .then(() => {
+        setLoading(false);
+        navigate("/");
+      })
+      .catch((err) => {
+        setLoading(false)
+        console.log(err);
+      });
   };
 
   return (
@@ -63,7 +72,10 @@ function SignUp() {
             </S.Erro>
           )}
           <S.Button type="submit">
-            <span>Cadastrar</span>{" "}
+            <span>
+              <PulseLoader color="#FFFFFF" loading={loading} margin={8} size={20} />
+              {!loading && "Cadastrar"}
+            </span>
           </S.Button>
         </S.Form>
         <Link to={"/"}>
